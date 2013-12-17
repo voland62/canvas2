@@ -1,6 +1,6 @@
-# wonderful-lib
+# canvas 2 
 
-A ClojureScript library designed to ... well, that part is up to you.
+An attamption to work with canvas via ClojureScript with help of cljs-start template
 
 ## Usage
 
