@@ -5,6 +5,9 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"
             :distribution :repo}
 
+  ;; I've changed the repl-options because the long compile time
+  :repl-options {:timeout 120000}
+
   ;; Required by cljsbuild  plugin
   :min-lein-version "2.2.0"
 

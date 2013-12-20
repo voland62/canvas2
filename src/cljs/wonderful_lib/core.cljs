@@ -5,12 +5,18 @@
 ;;; functions in the :source-paths setting of the :builds, it is
 ;;; strongly suggested to add them to the leiningen :source-paths.
 (ns wonderful-lib.core
-  (:require wonderful-lib.types))
+  (:require [wonderful-lib.types :as my-types]))
+
+
+(my-types/fff)
 
 (defn foo [greeting]
   (if greeting
     (str greeting "ClojureScript!")
     (str "Hello, ClojureScript!")))
+
+
+
 
 ;;(.write js/document (foo "Welcome to "))
 
@@ -26,7 +32,7 @@
 
 
 
-(js/requestAnimationFrame tick)
+
 
 (defn drawCircle [col]
   (do
@@ -34,6 +40,8 @@
     (.beginPath context)
     (.arc context 100 100 15 0 (* 2 Math.PI))
     (.fill context)))
+
+(drawCircle "#00ff00")
 
 ;; проверить ссылки
 
