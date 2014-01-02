@@ -8,21 +8,16 @@
   ;; I've changed the repl-options because the long compile time
   :repl-options {:timeout 120000}
 
-  ;; Required by cljsbuild  plugin
   :min-lein-version "2.2.0"
 
   ;; We need to add src/cljs too, because cljsbuild does not add its
   ;; source-paths to the project source-paths
   :source-paths ["src/clj" "src/cljs"]
 
-  ;; The libs which the project depends on.
-  ;; Here we use the latest stable clj and cljs releases
-  :dependencies [[org.clojure/clojure "1.5.1"]
-                 [org.clojure/clojurescript "0.0-2120"]]
 
-  ;; The plugins which the project depends on. Here we're using the
-  ;; experimental 1.0.0-alpha2 release. Change it to the official
-  ;; 1.0.0 as soon as it will be available
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [org.clojure/clojurescript "0.0-2138"]]
+
   :plugins [[lein-cljsbuild "1.0.1"]]
 
   ;; Hooks the cljsbuild subtasks to the lein tasks: lein clean, lein
@@ -45,6 +40,7 @@
              ;; sources in the packaged jar. This is because we added
              ;; the CLJS source codebase to the Leiningen
              ;; :source-paths
+
              ;:jar true
              ;; Compilation Options
              :compiler
