@@ -71,7 +71,14 @@
 
 
 
+;;-----------------------------------------
 
+
+
+(defn create-vertices [n w h]
+  )
+
+(def vertices (create-vertices 500 400 300))
 
 
 
