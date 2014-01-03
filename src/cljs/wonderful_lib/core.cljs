@@ -74,12 +74,22 @@
 ;;-----------------------------------------
 
 
-
 (defn create-vertices [n w h]
-  )
+  (repeatedly n #(identity (array (rand w) (rand h)))))
 
-(def vertices (create-vertices 500 400 300))
+(def vertices (create-vertices 100 400 300))
 
+(def triangles (Delaunay/triangulate (to-array vertices)))
+
+#_(defn draw-delaynay []
+  (doseq [index triangles]
+    (.beginPath context)
+    (.moveTo context () ())))
+
+#_(map (fn [triplet-of-indeses] (map #((vertices %) (vertices 2%) (vertices 3%)) triplet-of-indeses)) (partition 3 triangles))
+
+#_(-> triangles
+    (partial partition 3))
 
 
 (println "namespace wonderful-lib.core has been loaded")
