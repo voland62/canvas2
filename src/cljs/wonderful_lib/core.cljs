@@ -81,15 +81,23 @@
 
 (def triangles (Delaunay/triangulate (to-array vertices)))
 
-#_(defn draw-delaynay []
-  (doseq [index triangles]
+
+(def ttt (->> triangles
+              (partition 3)
+              (map #(map (partial nth vertices) %))))
+
+(defn draw-tris []
+  (doseq [[[p1-x p1-y] [p2-x p2-y] [p3-x p3-y] :as triangle] ttt]
     (.beginPath context)
-    (.moveTo context () ())))
+    (.moveTo context p1-x p1-y)
+    (.lineTo context p2-x p2-y)
+    (.lineTo context p3-x p3-y)
+    (.closePath context)
+    (.stroke context)))
 
-#_(map (fn [triplet-of-indeses] (map #((vertices %) (vertices 2%) (vertices 3%)) triplet-of-indeses)) (partition 3 triangles))
+;;(draw-tris)
 
-#_(-> triangles
-    (partial partition 3))
+
 
 
 (println "namespace wonderful-lib.core has been loaded")
