@@ -3,7 +3,7 @@
 /lib
 /classes
 /checkouts
-/dev-resources/public/js/*
+# /dev-resources/public/js/*
 /out
 pom.xml
 .nrepl-port
