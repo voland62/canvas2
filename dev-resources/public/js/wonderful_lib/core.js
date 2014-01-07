@@ -1,9 +1,6 @@
 // Compiled by ClojureScript 0.0-2138
 goog.provide('wonderful_lib.core');
 goog.require('cljs.core');
-goog.require('wonderful_lib.types');
-goog.require('wonderful_lib.types');
-cljs.core.println.call(null,"namespace wonderful-lib.core is starting loading...");
 wonderful_lib.core.foo = (function foo(greeting){if(cljs.core.truth_(greeting))
 {return [cljs.core.str(greeting),cljs.core.str("ClojureScript!")].join('');
 } else
@@ -100,4 +97,3 @@ break;
 }
 });
 wonderful_lib.core.draw_tris.call(null);
-cljs.core.println.call(null,"namespace wonderful-lib.core has been loaded");

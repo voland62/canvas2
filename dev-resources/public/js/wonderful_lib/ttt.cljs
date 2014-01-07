@@ -3,7 +3,7 @@
   )
 
 
-(println "namespace is starting loading...")
+;(println "namespace is starting loading...")
 
 
 ;(my-types/fff)
@@ -75,4 +75,4 @@
 
 
 
-(println "namespace has been loaded")
+;(println "namespace has been loaded")

@@ -1,9 +1,8 @@
-(ns wonderful-lib.core
-  (:require [wonderful-lib.types :as my-types]))
+(ns wonderful-lib.core)
 
+;(:require [wonderful-lib.types :as my-types])
 
-
-(println "namespace wonderful-lib.core is starting loading...")
+;(println "namespace wonderful-lib.core is starting loading...")
 
 
 ;(my-types/fff)
@@ -100,6 +99,6 @@
 
 
 
-(println "namespace wonderful-lib.core has been loaded")
+;(println "namespace wonderful-lib.core has been loaded")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;

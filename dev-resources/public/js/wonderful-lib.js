@@ -31050,14 +31050,10 @@ goog.require("clojure.browser.repl");
 goog.provide("wonderful_lib.types");
 goog.require("cljs.core");
 wonderful_lib.types.ttt = "Andrew";
-wonderful_lib.types.fff = function fff() {
-  return cljs.core.println.call(null, "my namespace experiment");
-};
 goog.provide("wonderful_lib.ttt");
 goog.require("cljs.core");
 goog.require("wonderful_lib.types");
 goog.require("wonderful_lib.types");
-cljs.core.println.call(null, "namespace is starting loading...");
 wonderful_lib.ttt.foo = function foo(greeting) {
   if (cljs.core.truth_(greeting)) {
     return[cljs.core.str(greeting), cljs.core.str("ClojureScript!")].join("");
@@ -31093,12 +31089,8 @@ wonderful_lib.ttt.start_loop = function start_loop() {
 wonderful_lib.ttt.stop_loop = function stop_loop() {
   return wonderful_lib.ttt.looping_QMARK_ = false;
 };
-cljs.core.println.call(null, "namespace has been loaded");
 goog.provide("wonderful_lib.core");
 goog.require("cljs.core");
-goog.require("wonderful_lib.types");
-goog.require("wonderful_lib.types");
-cljs.core.println.call(null, "namespace wonderful-lib.core is starting loading...");
 wonderful_lib.core.foo = function foo(greeting) {
   if (cljs.core.truth_(greeting)) {
     return[cljs.core.str(greeting), cljs.core.str("ClojureScript!")].join("");
@@ -31228,7 +31220,6 @@ wonderful_lib.core.draw_tris = function draw_tris() {
   }
 };
 wonderful_lib.core.draw_tris.call(null);
-cljs.core.println.call(null, "namespace wonderful-lib.core has been loaded");
 goog.provide("clojure.string");
 goog.require("cljs.core");
 goog.require("goog.string.StringBuffer");
@@ -31932,6 +31923,5 @@ wonderful_lib.core_test.foo_test = cljs.core.vary_meta.call(null, wonderful_lib.
 cemerick.cljs.test.register_test_BANG_.call(null, new cljs.core.Symbol(null, "wonderful-lib.core-test", "wonderful-lib.core-test", 601109733, null), wonderful_lib.core_test.foo_test);
 goog.provide("wonderful_lib.dummy");
 goog.require("cljs.core");
-cljs.core.println.call(null, "This is a ");
 
 //# sourceMappingURL=wonderful-lib.js.map

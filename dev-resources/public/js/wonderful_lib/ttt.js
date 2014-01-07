@@ -3,7 +3,6 @@ goog.provide('wonderful_lib.ttt');
 goog.require('cljs.core');
 goog.require('wonderful_lib.types');
 goog.require('wonderful_lib.types');
-cljs.core.println.call(null,"namespace is starting loading...");
 wonderful_lib.ttt.foo = (function foo(greeting){if(cljs.core.truth_(greeting))
 {return [cljs.core.str(greeting),cljs.core.str("ClojureScript!")].join('');
 } else
@@ -33,4 +32,3 @@ return wonderful_lib.ttt.tick.call(null,null);
 });
 wonderful_lib.ttt.stop_loop = (function stop_loop(){return wonderful_lib.ttt.looping_QMARK_ = false;
 });
-cljs.core.println.call(null,"namespace has been loaded");
