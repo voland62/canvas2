@@ -144,13 +144,11 @@
 (kantor-lines-2 [0 3] 4)
 
 
+(defn draw-kantor-lines [segments]
+  (doseq [[segment-start segment-end] segments]
+    (.beginPath context)
+    (.moveTo context segment-start 100)
+    (.lineTo context segment-end 100)
+    (.stroke context)))
 
-#_(defn draw [[frame-start frame-end] gaps]
-  (let [ln-3 (Math/log 3)
-        s-max (order frame-start)
-        highest-x s-max
-        s-target (order frame-end)
-        highest-step (/ s-max 3)
-        s1 highest-step
-        s2 (* 2 highest-step)]
-    ()))
+;(draw-kantor-lines (kantor-lines-2 [0 300] 3))
