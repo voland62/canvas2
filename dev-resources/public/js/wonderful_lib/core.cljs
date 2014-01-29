@@ -102,3 +102,53 @@
 ;(println "namespace wonderful-lib.core has been loaded")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+;(.clearRect context 0 0 (.-width canvas) (.-height canvas))
+
+
+(defn order [n]
+  (let [ln-3 (Math/log 3)]
+    (-> n Math/log (/ ln-3) Math/ceil)))
+
+(defn positive-numbers
+  ([] (positive-numbers 1))
+  ([n] (cons n (lazy-seq (positive-numbers (inc n))))))
+
+
+(defn greeting
+  ([] (greeting "Hello" "world"))
+  ([name] (greeting "Hello" name))
+  ([salutation name] (str salutation ", " name "!")))
+
+
+
+(defn kantor-lines [base max-depth]
+  (if (> max-depth 0)
+   (let [third (/ base 3)] (apply conj
+                                  (kantor-lines third (dec max-depth))
+                                  [third (* 2 third)]
+                                  (kantor-lines third (dec max-depth))))))
+
+(defn kantor-lines-2 [[base-start base-end :as base] max-depth]
+  (if (> max-depth 0)
+    (let [third (/ (- base-end base-start) 3)
+          s-1 (+ base-start third)
+          s-2 (s-1 + third)]
+      (apply conj
+             (kantor-lines-2 [base-start s-1] (dec max-depth))
+             [s-1 s-2]
+             (kantor-lines-2 [s-2 base-end] (dec max-depth))))))
+
+
+
+#_(defn draw [[frame-start frame-end] gaps]
+  (let [ln-3 (Math/log 3)
+        s-max (order frame-start)
+        highest-x s-max
+        s-target (order frame-end)
+        highest-step (/ s-max 3)
+        s1 highest-step
+        s2 (* 2 highest-step)]
+    ()))
