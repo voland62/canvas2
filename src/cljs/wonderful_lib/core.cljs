@@ -1,4 +1,6 @@
-(ns wonderful-lib.core)
+(ns wonderful-lib.core
+  (:require-macros [cljs.core.async.macros :refer [go go-loop]])
+  (:require [cljs.core.async :as async :refer [chan put! pipe unique merge map< filter< alts!]]))
 
 ;(:require [wonderful-lib.types :as my-types])
 
@@ -152,3 +154,66 @@
     (.stroke context)))
 
 ;(draw-kantor-lines (kantor-lines-2 [0 300] 3))
+
+
+
+
+;;---  key handlers based on async chanals ------
+
+;; -------------------------------------------------------------------------------
+;; Key events handling
+
+(def keycodes
+  "Keycodes that interest us. Taken from
+  http://docs.closure-library.googlecode.com/git/closure_goog_events_keynames.js.source.html#line33"
+  {37 :left
+   38 :up
+   39 :right
+   40 :down
+   32 :space
+   13 :enter})
+
+(defn event->key
+  [e]
+  (keycodes (.-keyCode e) :key-not-found))
+
+(defn event-chan
+  ([event-type] (event-chan event-type identity))
+  ([event-type parse-event]
+     (let [ev-chan (chan)]
+       (.addEventListener (.-body js/document)
+                          event-type
+                          #(put! ev-chan parse-event %)))))
+
+
+
+(defn key-chan
+  [event-type allowed-keys]
+  (let [evs (event-chan event-type event->key)]
+    (filter< allowed-keys evs)))
+
+
+
+
+(defn keys-up-chan []
+  (key-chan "keyup" #{:left :right :up :down}))
+
+
+(keys-up-chan)
+
+
+(defn init-key-handling []
+  )
+
+
+
+#_(.addEventListener (.-body js/document) "keydown"
+                   (fn [e] (println "this is keydown listener on canvas element"
+                                   (.-target e)
+                                   (.-currentTarget e))) false)
+
+
+
+
+#_(.addEventListener canvas "click"
+                   (fn [e] (println "and this is one more" e)) false)

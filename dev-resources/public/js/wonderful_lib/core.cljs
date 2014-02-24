@@ -1,4 +1,6 @@
-(ns wonderful-lib.core)
+(ns wonderful-lib.core
+  (:require-macros [cljs.core.async.macros :refer [go go-loop]])
+  (:require [cljs.core.async :as async :refer [chan put! pipe unique merge map< filter< alts!]]))
 
 ;(:require [wonderful-lib.types :as my-types])
 
@@ -105,7 +107,7 @@
 
 
 
-;(.clearRect context 0 0 (.-width canvas) (.-height canvas))
+(.clearRect context 0 0 (.-width canvas) (.-height canvas))
 
 
 (defn order [n]
@@ -135,20 +137,34 @@
   (if (> max-depth 0)
     (let [third (/ (- base-end base-start) 3)
           s-1 (+ base-start third)
-          s-2 (s-1 + third)]
+          s-2 (+ s-1 third)]
       (apply conj
              (kantor-lines-2 [base-start s-1] (dec max-depth))
              [s-1 s-2]
              (kantor-lines-2 [s-2 base-end] (dec max-depth))))))
 
+(kantor-lines-2 [0 3] 4)
 
 
-#_(defn draw [[frame-start frame-end] gaps]
-  (let [ln-3 (Math/log 3)
-        s-max (order frame-start)
-        highest-x s-max
-        s-target (order frame-end)
-        highest-step (/ s-max 3)
-        s1 highest-step
-        s2 (* 2 highest-step)]
-    ()))
+(defn draw-kantor-lines [segments]
+  (doseq [[segment-start segment-end] segments]
+    (.beginPath context)
+    (.moveTo context segment-start 100)
+    (.lineTo context segment-end 100)
+    (.stroke context)))
+
+;(draw-kantor-lines (kantor-lines-2 [0 300] 3))
+
+
+
+
+;;---  key handlers based on async chanals ------
+
+
+
+
+(.addEventListener canvas "keydown"
+                   (fn [e] (println "ttt" e)))
+
+(.addEventListener canvas "click"
+                   (fn [e] (println "this is click event listener" e)) false)
