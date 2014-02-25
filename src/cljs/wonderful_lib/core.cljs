@@ -1,6 +1,6 @@
 (ns wonderful-lib.core
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
-  (:require [cljs.core.async :as async :refer [chan put! pipe unique merge map< filter< alts!]]))
+  (:require [cljs.core.async :as async :refer [chan put! pipe unique merge map< filter< alts! alts!! close! >! <! <!! >!!]]))
 
 ;(:require [wonderful-lib.types :as my-types])
 
@@ -107,7 +107,7 @@
 
 
 
-(.clearRect context 0 0 (.-width canvas) (.-height canvas))
+;(.clearRect context 0 0 (.-width canvas) (.-height canvas))
 
 
 (defn order [n]
@@ -173,11 +173,37 @@
    32 :space
    13 :enter})
 
+
+(defn callback [e]
+  (let [key-code (.-keyCode e)]
+    #_(println key-code)
+    (.log js/console key-code)))
+
+
+(defn keyboard-chan []
+  (let [ch (chan)]
+    (.addEventListener (.-body js/document) "keydown"
+                       (fn [e] (do
+                                (put! ch (.-keyCode e))
+                                (callback))))
+    ch))
+
+(.removeEventListener (.-body js/document) "keydown" callback)
+
+(def k-channel (keyboard-chan))
+
+
+
+
+;(close! k-channel)
+
+
 (defn event->key
   [e]
   (keycodes (.-keyCode e) :key-not-found))
 
-(defn event-chan
+
+#_(defn event-chan
   ([event-type] (event-chan event-type identity))
   ([event-type parse-event]
      (let [ev-chan (chan)]
@@ -186,8 +212,10 @@
                           #(put! ev-chan parse-event %)))))
 
 
+;;(event-chan "keydown" (fn [e] (println e)))
 
-(defn key-chan
+
+#_(defn key-chan
   [event-type allowed-keys]
   (let [evs (event-chan event-type event->key)]
     (filter< allowed-keys evs)))
@@ -195,15 +223,14 @@
 
 
 
-(defn keys-up-chan []
+#_(defn keys-up-chan []
   (key-chan "keyup" #{:left :right :up :down}))
 
 
-(keys-up-chan)
+;(keys-up-chan)
 
 
-(defn init-key-handling []
-  )
+
 
 
 

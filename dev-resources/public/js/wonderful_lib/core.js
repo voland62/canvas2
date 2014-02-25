@@ -38,57 +38,57 @@ wonderful_lib.core.create_vertices = (function create_vertices(n,w,h){return clj
 });
 wonderful_lib.core.vertices = wonderful_lib.core.create_vertices.call(null,100,400,300);
 wonderful_lib.core.triangles = Delaunay.triangulate.call(null,cljs.core.to_array.call(null,wonderful_lib.core.vertices));
-wonderful_lib.core.ttt = cljs.core.map.call(null,(function (p1__22039_SHARP_){return cljs.core.map.call(null,cljs.core.partial.call(null,cljs.core.nth,wonderful_lib.core.vertices),p1__22039_SHARP_);
+wonderful_lib.core.ttt = cljs.core.map.call(null,(function (p1__22042_SHARP_){return cljs.core.map.call(null,cljs.core.partial.call(null,cljs.core.nth,wonderful_lib.core.vertices),p1__22042_SHARP_);
 }),cljs.core.partition.call(null,3,wonderful_lib.core.triangles));
-wonderful_lib.core.draw_tris = (function draw_tris(){var seq__22052 = cljs.core.seq.call(null,wonderful_lib.core.ttt);var chunk__22053 = null;var count__22054 = 0;var i__22055 = 0;while(true){
-if((i__22055 < count__22054))
-{var vec__22056 = cljs.core._nth.call(null,chunk__22053,i__22055);var vec__22057 = cljs.core.nth.call(null,vec__22056,0,null);var p1_x = cljs.core.nth.call(null,vec__22057,0,null);var p1_y = cljs.core.nth.call(null,vec__22057,1,null);var vec__22058 = cljs.core.nth.call(null,vec__22056,1,null);var p2_x = cljs.core.nth.call(null,vec__22058,0,null);var p2_y = cljs.core.nth.call(null,vec__22058,1,null);var vec__22059 = cljs.core.nth.call(null,vec__22056,2,null);var p3_x = cljs.core.nth.call(null,vec__22059,0,null);var p3_y = cljs.core.nth.call(null,vec__22059,1,null);var triangle = vec__22056;wonderful_lib.core.context.beginPath();
+wonderful_lib.core.draw_tris = (function draw_tris(){var seq__22055 = cljs.core.seq.call(null,wonderful_lib.core.ttt);var chunk__22056 = null;var count__22057 = 0;var i__22058 = 0;while(true){
+if((i__22058 < count__22057))
+{var vec__22059 = cljs.core._nth.call(null,chunk__22056,i__22058);var vec__22060 = cljs.core.nth.call(null,vec__22059,0,null);var p1_x = cljs.core.nth.call(null,vec__22060,0,null);var p1_y = cljs.core.nth.call(null,vec__22060,1,null);var vec__22061 = cljs.core.nth.call(null,vec__22059,1,null);var p2_x = cljs.core.nth.call(null,vec__22061,0,null);var p2_y = cljs.core.nth.call(null,vec__22061,1,null);var vec__22062 = cljs.core.nth.call(null,vec__22059,2,null);var p3_x = cljs.core.nth.call(null,vec__22062,0,null);var p3_y = cljs.core.nth.call(null,vec__22062,1,null);var triangle = vec__22059;wonderful_lib.core.context.beginPath();
 wonderful_lib.core.context.moveTo(p1_x,p1_y);
 wonderful_lib.core.context.lineTo(p2_x,p2_y);
 wonderful_lib.core.context.lineTo(p3_x,p3_y);
 wonderful_lib.core.context.closePath();
 wonderful_lib.core.context.stroke();
 {
-var G__22064 = seq__22052;
-var G__22065 = chunk__22053;
-var G__22066 = count__22054;
-var G__22067 = (i__22055 + 1);
-seq__22052 = G__22064;
-chunk__22053 = G__22065;
-count__22054 = G__22066;
-i__22055 = G__22067;
+var G__22067 = seq__22055;
+var G__22068 = chunk__22056;
+var G__22069 = count__22057;
+var G__22070 = (i__22058 + 1);
+seq__22055 = G__22067;
+chunk__22056 = G__22068;
+count__22057 = G__22069;
+i__22058 = G__22070;
 continue;
 }
 } else
-{var temp__4092__auto__ = cljs.core.seq.call(null,seq__22052);if(temp__4092__auto__)
-{var seq__22052__$1 = temp__4092__auto__;if(cljs.core.chunked_seq_QMARK_.call(null,seq__22052__$1))
-{var c__4150__auto__ = cljs.core.chunk_first.call(null,seq__22052__$1);{
-var G__22068 = cljs.core.chunk_rest.call(null,seq__22052__$1);
-var G__22069 = c__4150__auto__;
-var G__22070 = cljs.core.count.call(null,c__4150__auto__);
-var G__22071 = 0;
-seq__22052 = G__22068;
-chunk__22053 = G__22069;
-count__22054 = G__22070;
-i__22055 = G__22071;
-continue;
-}
-} else
-{var vec__22060 = cljs.core.first.call(null,seq__22052__$1);var vec__22061 = cljs.core.nth.call(null,vec__22060,0,null);var p1_x = cljs.core.nth.call(null,vec__22061,0,null);var p1_y = cljs.core.nth.call(null,vec__22061,1,null);var vec__22062 = cljs.core.nth.call(null,vec__22060,1,null);var p2_x = cljs.core.nth.call(null,vec__22062,0,null);var p2_y = cljs.core.nth.call(null,vec__22062,1,null);var vec__22063 = cljs.core.nth.call(null,vec__22060,2,null);var p3_x = cljs.core.nth.call(null,vec__22063,0,null);var p3_y = cljs.core.nth.call(null,vec__22063,1,null);var triangle = vec__22060;wonderful_lib.core.context.beginPath();
-wonderful_lib.core.context.moveTo(p1_x,p1_y);
-wonderful_lib.core.context.lineTo(p2_x,p2_y);
-wonderful_lib.core.context.lineTo(p3_x,p3_y);
-wonderful_lib.core.context.closePath();
-wonderful_lib.core.context.stroke();
-{
-var G__22072 = cljs.core.next.call(null,seq__22052__$1);
-var G__22073 = null;
+{var temp__4092__auto__ = cljs.core.seq.call(null,seq__22055);if(temp__4092__auto__)
+{var seq__22055__$1 = temp__4092__auto__;if(cljs.core.chunked_seq_QMARK_.call(null,seq__22055__$1))
+{var c__4150__auto__ = cljs.core.chunk_first.call(null,seq__22055__$1);{
+var G__22071 = cljs.core.chunk_rest.call(null,seq__22055__$1);
+var G__22072 = c__4150__auto__;
+var G__22073 = cljs.core.count.call(null,c__4150__auto__);
 var G__22074 = 0;
-var G__22075 = 0;
-seq__22052 = G__22072;
-chunk__22053 = G__22073;
-count__22054 = G__22074;
-i__22055 = G__22075;
+seq__22055 = G__22071;
+chunk__22056 = G__22072;
+count__22057 = G__22073;
+i__22058 = G__22074;
+continue;
+}
+} else
+{var vec__22063 = cljs.core.first.call(null,seq__22055__$1);var vec__22064 = cljs.core.nth.call(null,vec__22063,0,null);var p1_x = cljs.core.nth.call(null,vec__22064,0,null);var p1_y = cljs.core.nth.call(null,vec__22064,1,null);var vec__22065 = cljs.core.nth.call(null,vec__22063,1,null);var p2_x = cljs.core.nth.call(null,vec__22065,0,null);var p2_y = cljs.core.nth.call(null,vec__22065,1,null);var vec__22066 = cljs.core.nth.call(null,vec__22063,2,null);var p3_x = cljs.core.nth.call(null,vec__22066,0,null);var p3_y = cljs.core.nth.call(null,vec__22066,1,null);var triangle = vec__22063;wonderful_lib.core.context.beginPath();
+wonderful_lib.core.context.moveTo(p1_x,p1_y);
+wonderful_lib.core.context.lineTo(p2_x,p2_y);
+wonderful_lib.core.context.lineTo(p3_x,p3_y);
+wonderful_lib.core.context.closePath();
+wonderful_lib.core.context.stroke();
+{
+var G__22075 = cljs.core.next.call(null,seq__22055__$1);
+var G__22076 = null;
+var G__22077 = 0;
+var G__22078 = 0;
+seq__22055 = G__22075;
+chunk__22056 = G__22076;
+count__22057 = G__22077;
+i__22058 = G__22078;
 continue;
 }
 }
@@ -155,58 +155,58 @@ wonderful_lib.core.kantor_lines = (function kantor_lines(base,max_depth){if((max
 {return null;
 }
 });
-wonderful_lib.core.kantor_lines_2 = (function kantor_lines_2(p__22076,max_depth){var vec__22078 = p__22076;var base_start = cljs.core.nth.call(null,vec__22078,0,null);var base_end = cljs.core.nth.call(null,vec__22078,1,null);var base = vec__22078;if((max_depth > 0))
+wonderful_lib.core.kantor_lines_2 = (function kantor_lines_2(p__22079,max_depth){var vec__22081 = p__22079;var base_start = cljs.core.nth.call(null,vec__22081,0,null);var base_end = cljs.core.nth.call(null,vec__22081,1,null);var base = vec__22081;if((max_depth > 0))
 {var third = ((base_end - base_start) / 3);var s_1 = (base_start + third);var s_2 = (s_1 + third);return cljs.core.apply.call(null,cljs.core.conj,kantor_lines_2.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [base_start,s_1], null),(max_depth - 1)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [s_1,s_2], null),kantor_lines_2.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [s_2,base_end], null),(max_depth - 1)));
 } else
 {return null;
 }
 });
 wonderful_lib.core.kantor_lines_2.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [0,3], null),4);
-wonderful_lib.core.draw_kantor_lines = (function draw_kantor_lines(segments){var seq__22085 = cljs.core.seq.call(null,segments);var chunk__22086 = null;var count__22087 = 0;var i__22088 = 0;while(true){
-if((i__22088 < count__22087))
-{var vec__22089 = cljs.core._nth.call(null,chunk__22086,i__22088);var segment_start = cljs.core.nth.call(null,vec__22089,0,null);var segment_end = cljs.core.nth.call(null,vec__22089,1,null);wonderful_lib.core.context.beginPath();
+wonderful_lib.core.draw_kantor_lines = (function draw_kantor_lines(segments){var seq__22088 = cljs.core.seq.call(null,segments);var chunk__22089 = null;var count__22090 = 0;var i__22091 = 0;while(true){
+if((i__22091 < count__22090))
+{var vec__22092 = cljs.core._nth.call(null,chunk__22089,i__22091);var segment_start = cljs.core.nth.call(null,vec__22092,0,null);var segment_end = cljs.core.nth.call(null,vec__22092,1,null);wonderful_lib.core.context.beginPath();
 wonderful_lib.core.context.moveTo(segment_start,100);
 wonderful_lib.core.context.lineTo(segment_end,100);
 wonderful_lib.core.context.stroke();
 {
-var G__22091 = seq__22085;
-var G__22092 = chunk__22086;
-var G__22093 = count__22087;
-var G__22094 = (i__22088 + 1);
-seq__22085 = G__22091;
-chunk__22086 = G__22092;
-count__22087 = G__22093;
-i__22088 = G__22094;
+var G__22094 = seq__22088;
+var G__22095 = chunk__22089;
+var G__22096 = count__22090;
+var G__22097 = (i__22091 + 1);
+seq__22088 = G__22094;
+chunk__22089 = G__22095;
+count__22090 = G__22096;
+i__22091 = G__22097;
 continue;
 }
 } else
-{var temp__4092__auto__ = cljs.core.seq.call(null,seq__22085);if(temp__4092__auto__)
-{var seq__22085__$1 = temp__4092__auto__;if(cljs.core.chunked_seq_QMARK_.call(null,seq__22085__$1))
-{var c__4150__auto__ = cljs.core.chunk_first.call(null,seq__22085__$1);{
-var G__22095 = cljs.core.chunk_rest.call(null,seq__22085__$1);
-var G__22096 = c__4150__auto__;
-var G__22097 = cljs.core.count.call(null,c__4150__auto__);
-var G__22098 = 0;
-seq__22085 = G__22095;
-chunk__22086 = G__22096;
-count__22087 = G__22097;
-i__22088 = G__22098;
-continue;
-}
-} else
-{var vec__22090 = cljs.core.first.call(null,seq__22085__$1);var segment_start = cljs.core.nth.call(null,vec__22090,0,null);var segment_end = cljs.core.nth.call(null,vec__22090,1,null);wonderful_lib.core.context.beginPath();
-wonderful_lib.core.context.moveTo(segment_start,100);
-wonderful_lib.core.context.lineTo(segment_end,100);
-wonderful_lib.core.context.stroke();
-{
-var G__22099 = cljs.core.next.call(null,seq__22085__$1);
-var G__22100 = null;
+{var temp__4092__auto__ = cljs.core.seq.call(null,seq__22088);if(temp__4092__auto__)
+{var seq__22088__$1 = temp__4092__auto__;if(cljs.core.chunked_seq_QMARK_.call(null,seq__22088__$1))
+{var c__4150__auto__ = cljs.core.chunk_first.call(null,seq__22088__$1);{
+var G__22098 = cljs.core.chunk_rest.call(null,seq__22088__$1);
+var G__22099 = c__4150__auto__;
+var G__22100 = cljs.core.count.call(null,c__4150__auto__);
 var G__22101 = 0;
-var G__22102 = 0;
-seq__22085 = G__22099;
-chunk__22086 = G__22100;
-count__22087 = G__22101;
-i__22088 = G__22102;
+seq__22088 = G__22098;
+chunk__22089 = G__22099;
+count__22090 = G__22100;
+i__22091 = G__22101;
+continue;
+}
+} else
+{var vec__22093 = cljs.core.first.call(null,seq__22088__$1);var segment_start = cljs.core.nth.call(null,vec__22093,0,null);var segment_end = cljs.core.nth.call(null,vec__22093,1,null);wonderful_lib.core.context.beginPath();
+wonderful_lib.core.context.moveTo(segment_start,100);
+wonderful_lib.core.context.lineTo(segment_end,100);
+wonderful_lib.core.context.stroke();
+{
+var G__22102 = cljs.core.next.call(null,seq__22088__$1);
+var G__22103 = null;
+var G__22104 = 0;
+var G__22105 = 0;
+seq__22088 = G__22102;
+chunk__22089 = G__22103;
+count__22090 = G__22104;
+i__22091 = G__22105;
 continue;
 }
 }
@@ -217,7 +217,15 @@ continue;
 break;
 }
 });
-wonderful_lib.core.canvas.addEventListener("keydown",(function (e){return cljs.core.println.call(null,"ttt",e);
-}));
-wonderful_lib.core.canvas.addEventListener("click",(function (e){return cljs.core.println.call(null,"this is click event listener",e);
-}),false);
+/**
+* Keycodes that interest us. Taken from
+* http://docs.closure-library.googlecode.com/git/closure_goog_events_keynames.js.source.html#line33
+*/
+wonderful_lib.core.keycodes = new cljs.core.PersistentArrayMap(null, 6, [37,new cljs.core.Keyword(null,"left","left",1017222009),38,new cljs.core.Keyword(null,"up","up",1013907981),39,new cljs.core.Keyword(null,"right","right",1122416014),40,new cljs.core.Keyword(null,"down","down",1016993812),32,new cljs.core.Keyword(null,"space","space",1123542136),13,new cljs.core.Keyword(null,"enter","enter",1110571594)], null);
+wonderful_lib.core.callback = (function callback(e){var key_code = e.keyCode;cljs.core.println.call(null,key_code);
+return console.log(key_code);
+});
+wonderful_lib.core.keyboard_chan = (function keyboard_chan(){var ch = cljs.core.async.chan.call(null);return document.body.addEventListener("keydown",wonderful_lib.core.callback);
+});
+wonderful_lib.core.event__GT_key = (function event__GT_key(e){return wonderful_lib.core.keycodes.call(null,e.keyCode,new cljs.core.Keyword(null,"key-not-found","key-not-found",1380119948));
+});

@@ -160,11 +160,74 @@
 
 ;;---  key handlers based on async chanals ------
 
+;; -------------------------------------------------------------------------------
+;; Key events handling
+
+(def keycodes
+  "Keycodes that interest us. Taken from
+  http://docs.closure-library.googlecode.com/git/closure_goog_events_keynames.js.source.html#line33"
+  {37 :left
+   38 :up
+   39 :right
+   40 :down
+   32 :space
+   13 :enter})
+
+
+(defn callback [e]
+  (let [key-code (.-keyCode e)]
+    (println key-code)
+    (.log js/console key-code)))
+
+
+(defn keyboard-chan []
+  (let [ch (chan)]
+    (.addEventListener (.-body js/document) "keydown" callback)))
+
+
+(defn event->key
+  [e]
+  (keycodes (.-keyCode e) :key-not-found))
+
+
+#_(defn event-chan
+  ([event-type] (event-chan event-type identity))
+  ([event-type parse-event]
+     (let [ev-chan (chan)]
+       (.addEventListener (.-body js/document)
+                          event-type
+                          #(put! ev-chan parse-event %)))))
+
+
+;;(event-chan "keydown" (fn [e] (println e)))
+
+
+#_(defn key-chan
+  [event-type allowed-keys]
+  (let [evs (event-chan event-type event->key)]
+    (filter< allowed-keys evs)))
 
 
 
-(.addEventListener canvas "keydown"
-                   (fn [e] (println "ttt" e)))
 
-(.addEventListener canvas "click"
-                   (fn [e] (println "this is click event listener" e)) false)
+#_(defn keys-up-chan []
+  (key-chan "keyup" #{:left :right :up :down}))
+
+
+;(keys-up-chan)
+
+
+
+
+
+
+#_(.addEventListener (.-body js/document) "keydown"
+                   (fn [e] (println "this is keydown listener on canvas element"
+                                   (.-target e)
+                                   (.-currentTarget e))) false)
+
+
+
+
+#_(.addEventListener canvas "click"
+                   (fn [e] (println "and this is one more" e)) false)
